@@ -1,0 +1,14 @@
+# Node.js
+node_modules/
+apoio/
+
+# Logs e arquivos temporários
+logs/
+*.log
+npm-debug.log*
+
+# Arquivos de ambiente
+.env
+
+# Arquivos de build
+/build/

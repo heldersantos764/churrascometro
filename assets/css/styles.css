@@ -1,0 +1,123 @@
+:root{
+    --color1-light: #3f373c;
+    --color2-light: #ffffff;
+    --color3-light: #141414;
+
+    --color1-dark: #ffffff;
+    --color2-dark: #3f373c;
+    --color3-dark: #efa360;
+    --color3-dark-hover: #c7874f;
+
+    --color-beige: #a0948b;
+    --color-beige-border: #6b5e66;
+
+    .light{
+        --color1: var( --color1-light);
+        --color2:var(  --color2-light);
+        --color3: var( --color3-light);
+    }
+    .dark{
+        --color1: var( --color1-dark);
+        --color2:var(  --color2-dark);
+        --color3: var( --color3-dark);
+    }
+}
+
+body{
+    background-color: var(--color2);
+}
+
+.text-theme-orange{
+    color: var(--color3)
+}
+
+.text-theme-light{
+    color: var(--color1);
+}
+
+.form-check-input {
+    background-color: #fd790d !important;
+    border-color: #fd790d;
+}
+
+.form-check-input:checked {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+.count-person, .container-system{
+    background-color: var(--color-beige);
+    padding: 20px 40px;
+    border-radius: 10px;
+    border: 2px solid var(--color-beige-border);
+}
+
+.count-person .number{
+    color: #8b6b52;
+}
+
+.count-person .buttons button{
+    color: var(--color3-dark);
+    font-weight: bold;
+    font-size: 15pt;
+    border: none;
+    background-color:#8b6b52;
+    width: 45px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.count-person .buttons button:hover{
+    background-color:#7a5e48;
+}
+
+.btn-system{
+    background-color: var(--color3-dark);
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-system:hover{
+    background-color: var(--color3-dark-hover);
+}
+
+.input-system{
+    background-color: var(--color-beige);
+    text-align: center;
+    border: 2px solid var(--color-beige-border);
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 8px 0;
+    font-weight: bold;
+}
+
+.input-system:focus{
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+    color: var(--color-beige-border);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+tr td:last-child {
+    text-align: right;
+}
+
+tr td:first-child{
+    font-weight: bold;
+}
+
+tr:not(:last-child), thead tr {
+    border-bottom: 1px solid #222222;
+}

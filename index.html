@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Churrascômetro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body class="light">
+    
+    <div class="p-3">
+        <div id="btn-theme" style="color: black" class="form-check form-switch form-check-reverse">
+            <label class="form-check-label fw-bold" for="theme">Tema escuro</label>
+            <input class="form-check-input" type="checkbox" role="switch" id="theme" />
+        </div>
+    </div>
+
+    <div class="container d-flex justify-content-center align-items-center flex-column">
+        <h1 class="text-theme-orange mt-3 mb-5">Churrascômetro</h1>
+
+        <!-- INICIO registrar e-mail -->
+        <div id="page-register" class="page d-none justify-content-center align-items-center flex-column col col-md-4">
+            <p class="text-theme-light text-center">
+                Fique por dentro de todas as novidades. Cadastre seu e-mail e receba
+                promoções especiais.
+            </p>
+
+            <form id="form-register">
+                <input class="input-system" type="text" name="name" required placeholder="Digite seu nome" />
+                <input class="input-system" type="email" name="email" required placeholder="Digite seu e-mail" />
+                <input class="input-system" type="text" name="cep" required placeholder="Digite seu CEP" />
+                <div class="d-flex align-items-start">
+                    <input class="mt-1 me-2" type="checkbox" checked name="confirm" id="confirm" />
+                    <label class="text-theme-light" for="confirm">Concordo em receber comunicações e ofertas
+                        personalizadas de
+                        acordo com meus interesses.</label>
+                </div>
+                <div class="d-flex mt-3 justify-content-center">
+                    <button type="submit" class="btn-system py-2 px-4">
+                        Cadastrar e avançar
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- FIM registrar e-mail -->
+
+        <!-- INICIO quantidade de pessoas -->
+        <div id="page-count-people" class="page d-none justify-content-center align-items-center flex-column">
+            <p class="text-theme-light">
+                Precisa de uma ajudinha com o churrasco? :)
+            </p>
+            <p class="text-theme-light">Quantas pessoas vão participar?</p>
+
+            <div class="d-flex gap-3">
+                <div class="count-person d-flex justify-content-center align-items-center flex-column">
+                    <div class="title fw-bold">Homens</div>
+                    <div id="men" class="number fs-3 fw-bold">0</div>
+                    <div class="buttons d-flex gap-3">
+                        <button class="decrease" reference-id="men">-</button>
+                        <button class="increase" reference-id="men">+</button>
+                    </div>
+                </div>
+
+                <div class="count-person d-flex justify-content-center align-items-center flex-column">
+                    <div class="title fw-bold">Mulheres</div>
+                    <div id="women" class="number fs-3 fw-bold">0</div>
+                    <div class="buttons d-flex gap-3">
+                        <button class="decrease" reference-id="women">-</button>
+                        <button class="increase" reference-id="women">+</button>
+                    </div>
+                </div>
+
+                <div class="count-person d-flex justify-content-center align-items-center flex-column">
+                    <div class="title fw-bold">Crianças</div>
+                    <div id="children" class="number fs-3 fw-bold">0</div>
+                    <div class="buttons d-flex gap-3">
+                        <button class="decrease" reference-id="children">-</button>
+                        <button class="increase" reference-id="children">+</button>
+                    </div>
+                </div>
+
+                <div class="count-person d-flex justify-content-center align-items-center flex-column">
+                    <div class="title fw-bold">Quantos adultos bebem?</div>
+                    <div id="drink" class="number fs-3 fw-bold">0</div>
+                    <div class="buttons d-flex gap-3">
+                        <button class="decrease" reference-id="drink">-</button>
+                        <button class="increase" reference-id="drink">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex mt-5">
+                <button id="calculate" type="button" class="btn-system py-2 px-4">
+                    Calcular
+                </button>
+            </div>
+        </div>
+        <!-- FIM quantidade de pessoas -->
+
+        <!-- INICIO lista para o churrasco -->
+        <div id="page-barbecue" class="page d-none justify-content-center align-items-center flex-column col col-md-4">
+            <p class="text-theme-light text-center">
+                Confira a lista para o seu churrasco
+            </p>
+            <p class="text-theme-orange pt-1 pb-1 fs-5 fw-bold">5 convidados</p>
+            <div class="d-flex flex-row text-theme-light justify-content-between col col-12">
+                <span>1 homem(ns)</span>
+                <span>1 mulher(es)</span>
+                <span>1 criança(s)</span>
+            </div>
+
+            <div class="container-system col col-12 mt-1">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>ITEM</th>
+                            <th class="text-end">QUANTIDADE</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Carne</td>
+                            <td id="meat"></td>
+                        </tr>
+                        <tr>
+                            <td>Pão de alho</td>
+                            <td id="bread"></td>
+                        </tr>
+                        <tr>
+                            <td>Refrigerante</td>
+                            <td id="soda"></td>
+                        </tr>
+                        <tr>
+                            <td>Água</td>
+                            <td id="water"></td>
+                        </tr>
+                        <tr>
+                            <td>Cerveja</td>
+                            <td id="beer"></td>
+                        </tr>
+                        <tr>
+                            <td>Carvão</td>
+                            <td id="coal"></td>
+                        </tr>
+                        <tr>
+                            <td>Sal</td>
+                            <td id="salt"></td>
+                        </tr>
+                        <tr>
+                            <td>Gelo</td>
+                            <td id="ice"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex mt-3 justify-content-center">
+                    <button type="button" class="btn-system py-2 px-4">
+                        Novo Cálculo
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- FIM lista para o churrasco -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+
+</html>
