@@ -7,7 +7,7 @@ class Barbecue {
     let value = 0;
 
     value += this.people.men * 0.4;
-    (value += this.people.women * 0), 32;
+    value += this.people.women * 0.32;
     value += this.people.children * 0.2;
 
     return value;
