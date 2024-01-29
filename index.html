@@ -32,7 +32,7 @@
             <form id="form-register">
                 <input class="input-system" type="text" name="name" required placeholder="Digite seu nome" />
                 <input class="input-system" type="email" name="email" required placeholder="Digite seu e-mail" />
-                <input class="input-system" type="text" name="cep" required placeholder="Digite seu CEP" />
+                <input id="cep" class="input-system" type="text" name="cep" required placeholder="Digite seu CEP" />
                 <div class="d-flex align-items-start">
                     <input class="mt-1 me-2" type="checkbox" checked name="confirm" id="confirm" />
                     <label class="text-theme-light" for="confirm">Concordo em receber comunicações e ofertas
@@ -106,11 +106,11 @@
             <p class="text-theme-light text-center">
                 Confira a lista para o seu churrasco
             </p>
-            <p class="text-theme-orange pt-1 pb-1 fs-5 fw-bold">5 convidados</p>
+            <p class="text-theme-orange pt-1 pb-1 fs-5 fw-bold" id="amount-people">5 convidados</p>
             <div class="d-flex flex-row text-theme-light justify-content-between col col-12">
-                <span>1 homem(ns)</span>
-                <span>1 mulher(es)</span>
-                <span>1 criança(s)</span>
+                <span id="amount-men">1 homem(ns)</span>
+                <span id="amount-women">1 mulher(es)</span>
+                <span id="amount-children">1 criança(s)</span>
             </div>
 
             <div class="container-system col col-12 mt-1">
@@ -159,7 +159,7 @@
                 </table>
 
                 <div class="d-flex mt-3 justify-content-center">
-                    <button type="button" class="btn-system py-2 px-4">
+                    <button id="btn-new-calc" type="button" class="btn-system py-2 px-4">
                         Novo Cálculo
                     </button>
                 </div>
@@ -171,6 +171,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/imask"></script>
 
     <script type="module" src="assets/js/main.js"></script>
 </body>

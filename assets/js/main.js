@@ -1,4 +1,5 @@
 import Barbecue from "./Barbecue.js";
+import Validation from "./Validation.js";
 
 const baseUrlApi = "http://localhost:3000/contacts";
 
@@ -8,15 +9,36 @@ let selectedTheme = localStorage.getItem("theme") ?? "light";
 const pages = document.getElementsByClassName("page");
 const formRegister = document.getElementById("form-register");
 const btnCalculate = document.getElementById("calculate");
+const btnNewCalc = document.getElementById("btn-new-calc");
 
 const people = {
   men: 0,
   women: 0,
   children: 0,
-  drink: 0
-}
+  drink: 0,
+};
 
 let barbecueItems;
+
+const mask = {
+  cep: "00000-000",
+};
+
+const validateRegister = (data) => {
+  let errorMessager = null;
+
+  if (!Validation.isName(data.name, 5)) {
+    errorMessager = "Nome Inválido";
+  } else if (!Validation.isEmail(data.email)) {
+    errorMessager = "E-mail Inválido";
+  } else if (!Validation.isCep(data.cep)) {
+    errorMessager = "CEP Inválido";
+  }
+
+  return errorMessager;
+};
+
+IMask(document.getElementById("cep"), mask.cep);
 
 /**
  * adiciona e evento change ao botão de ativar e desativar o tema dark
@@ -44,14 +66,21 @@ formRegister.addEventListener("submit", async (event) => {
     dataObject[key] = value;
   }
 
-  const result = await registerContact(dataObject);
+  let errorValidation = validateRegister(dataObject);
+  console.log(errorValidation)
 
-  if (result) {
-    alert("cadastro realizado com sucesso.");
-    localStorage.setItem('isRegister', true)
-    activatePage("page-count-people");
-  } else {
-    alert("Erro ao cadastrar contato.");
+  if (errorValidation === null) {
+    const result = await registerContact(dataObject);
+
+    if (result) {
+      alert("cadastro realizado com sucesso.");
+      localStorage.setItem("isRegister", true);
+      activatePage("page-count-people");
+    } else {
+      alert("Erro ao cadastrar contato.");
+    }
+  }else{
+    alert(errorValidation)
   }
 });
 
@@ -74,17 +103,34 @@ document.querySelectorAll(".decrease, .increase").forEach((button) => {
     }
 
     people[referenceId] = value;
-    console.log(people)
 
     element.textContent = value;
   });
 });
 
-btnCalculate.addEventListener('click', () => {
+btnCalculate.addEventListener("click", () => {
   const barbecue = new Barbecue(people);
   barbecueItems = barbecue.getAmountItems();
-  console.log(barbecueItems);
-})
+
+  document.getElementById("amount-men").innerText = people.men + " homem(ns)";
+  document.getElementById("amount-women").innerText =
+    people.women + " mulher(es)";
+  document.getElementById("amount-children").innerText =
+    people.children + " criança(s)";
+  document.getElementById("amount-people").innerText =
+    people.men + people.women + people.children + " convidados";
+
+  Object.entries(barbecueItems).forEach(([key, value]) => {
+    const cell = document.getElementById(key);
+    cell.innerText = value;
+  });
+
+  activatePage("page-barbecue");
+});
+
+btnNewCalc.addEventListener("click", () => {
+  activatePage("page-count-people");
+});
 
 /**
  * troca o tema da página de acordo com o valor da
@@ -114,8 +160,8 @@ function activatePage(pageId) {
 /**
  * Função assincrona para cadastrar os dados de contato do usuário
  * usando o json-server
- * @param {*} contact 
- * @returns 
+ * @param {*} contact
+ * @returns
  */
 async function registerContact(contact) {
   try {
@@ -137,9 +183,9 @@ async function registerContact(contact) {
   }
 }
 
-if(localStorage.getItem('isRegister') == 'true'){
+if (localStorage.getItem("isRegister") == "true") {
   activatePage("page-count-people");
-}else{
+} else {
   activatePage("page-register");
 }
 

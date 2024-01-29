@@ -74,14 +74,14 @@ class Barbecue {
 
   getAmountItems() {
     return {
-      meat: this.calculateMeat().toFixed(2),
-      bread: this.calculateBread(),
-      soda: this.calculateSoda(),
-      water: this.calculateWater(),
-      beer: this.calculateBeer(),
-      coal: this.calculateCoal(),
-      salt: this.calculateSalt().toFixed(2),
-      ice: this.caculateIce(),
+      meat: this.calculateMeat().toFixed(2)+' kg',
+      bread: this.calculateBread()+' unidades',
+      soda: this.calculateSoda()+' garrafas de 2L',
+      water: this.calculateWater()+' garrafas de 1L',
+      beer: this.calculateBeer()+' garrafas de 600ml',
+      coal: this.calculateCoal()+' kg',
+      salt: this.calculateSalt().toFixed(2)+' kg',
+      ice: this.caculateIce().toFixed(2)+' kg',
     };
   }
 }
